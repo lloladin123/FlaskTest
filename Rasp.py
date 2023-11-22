@@ -19,7 +19,7 @@ class SenseMeasure:
             self.s.clear(self.green)
             print("Temp: "+str(temp))
             temp_value = temp / 2.5 + 16
-            self.s.clear(self.s.clear(self.red))
+            (self.s.clear(self.red))
             print("Temp value: "+str(temp_value))
             return temp_value
         elif mode == "pressure":
