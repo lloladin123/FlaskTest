@@ -2,7 +2,7 @@ from sense_hat import SenseHat
 import time
 
 class SenseMeasure:
-    def init(self):
+    def __init__(self):
         self.s = SenseHat()
         self.s.low_light = True
         self.green = (0, 255, 0)
@@ -16,8 +16,10 @@ class SenseMeasure:
     def Get_Measure(self, mode):
         if mode == "temp":
             temp = self.s.temp
+            Temp_Color(self)
             print("Temp: "+str(temp))
             temp_value = temp / 2.5 + 16
+            Temp_Color(self)
             print("Temp value: "+str(temp_value))
             return temp_value
         elif mode == "pressure":
@@ -28,6 +30,11 @@ class SenseMeasure:
             humidity = self.s.humidity
             humidity_value = 64* humidity / 100
             return humidity_value
+def Temp_Color(self):
+    if self.s.temp < 30:
+        self.s.clear(self.green)
+    else:
+        self.s.clear(self.s.clear(self.red))
 
 if __name__ == "__main__":
     s = SenseMeasure()
